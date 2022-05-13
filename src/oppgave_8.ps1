@@ -89,14 +89,3 @@ if ((sumPoengKortstokk -kortstokk $meg) -gt $blackjack) {
     skrivUtResultat -vinner "Magnus" -kortStokkMagnus $magnus -kortStokkMeg $meg
     exit
 }
-
-while ((sumPoengKortstokk -kortstokk $magnus) -le (sumPoengKortstokk -kortstokk $meg)) {
-    $magnus += $kortstokk[0]
-    $kortstokk = $kortstokk[1..($kortstokk.Count - 1)]
-}
-
-### Magnus taper spillet dersom poengsummen er høyere enn 21
-if ((sumPoengKortstokk -kortstokk $magnus) -gt $blackjack) {
-    skrivUtResultat -vinner "Meg" -kortStokkMagnus $magnus -kortStokkMeg $meg
-    exit
-}
