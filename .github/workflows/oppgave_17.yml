@@ -1,4 +1,4 @@
-name: oppgave 16
+name: oppgave 17
 on: [push, workflow_dispatch]
  
 jobs:
@@ -20,3 +20,10 @@ jobs:
           with:
             creds: ${{ secrets.BLACKJACK }}
             enable-AzPSSession: true
+        - name: Install and cache PowerShell modules
+          uses: potatoqualitee/psmodulecache@v4.5
+          with:
+            modules-to-cache: Az.Storage, Az.Functions, Az.Websites, Az.Resources, Az.Accounts
+
+        - name: Deploy Function app
+          run: .src/funcApp/deployWithBicep.ps1
